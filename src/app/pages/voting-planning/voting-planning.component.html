@@ -1,0 +1,53 @@
+<nb-layout center>
+  <nb-layout-header><h1>P Planning</h1></nb-layout-header>
+
+  <nb-layout-column>
+    <div>
+      <nb-alert status="info" [nbSpinner]="totalVotos !== totalMembros">
+        Votos {{ totalVotos }} / {{ totalMembros }}
+      </nb-alert>
+    </div>
+    <nb-card accent="primary">
+      <nb-card-header>Escolha o tamanho</nb-card-header>
+      <nb-card-body>
+        <button
+          nbButton
+          fullWidth
+          status="primary"
+          size="giant"
+          class="pb-15 btn-t"
+          [disabled]="tamanho !== 0 && tamanho !== 3"
+          (click)="onVoting(0)"
+        >
+          <span>P</span>
+        </button>
+        <button
+          nbButton
+          fullWidth
+          status="primary"
+          size="giant"
+          class="pb-15 btn-t"
+          [disabled]="tamanho !== 1 && tamanho !== 3"
+          (click)="onVoting(1)"
+        >
+          <span>M</span>
+        </button>
+        <button
+          nbButton
+          fullWidth
+          status="primary"
+          size="giant"
+          class="pb-15 btn-t"
+          [disabled]="tamanho !== 2 && tamanho !== 3"
+          (click)="onVoting(2)"
+        >
+          <span>G</span>
+        </button>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+
+  <nb-layout-footer>
+    By&nbsp;<a href="gabriellima.site">Gabriel Lima</a>
+  </nb-layout-footer>
+</nb-layout>

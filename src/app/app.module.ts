@@ -12,7 +12,8 @@ import {
   NbButtonModule,
   NbIconModule,
   NbSpinnerModule,
-  NbToastrModule
+  NbToastrModule,
+  NbAlertModule
 } from '@nebular/theme';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -21,9 +22,10 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './pages/home/home.component';
 import { FormsModule } from '@angular/forms';
+import { VotingPlanningComponent } from './pages/voting-planning/voting-planning.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, VotingPlanningComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -42,7 +44,8 @@ import { FormsModule } from '@angular/forms';
     NbToastrModule.forRoot({
       destroyByClick: true,
       preventDuplicates: true
-    })
+    }),
+    NbAlertModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
+import { VotingPlanningComponent } from './pages/voting-planning/voting-planning.component';
 
 const routes: Routes = [
+  {
+    path: 'voting/:grupoId/:userId',
+    component: VotingPlanningComponent
+  },
   {
     path: '',
     component: HomeComponent
   },
+
   {
     path: '**',
     component: HomeComponent

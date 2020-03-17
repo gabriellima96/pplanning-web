@@ -39,7 +39,21 @@ export class ApiService {
     return this.db.object<ProjetoId>(this.PATH + key);
   }
 
+  buscarMembro(key: string, membroKey: string) {
+    return this.db.object<Membro>(
+      `${this.PATH}${key}/${this.MEMBRO_PATH}${membroKey}`
+    );
+  }
+
   adicionarMembro(key: string, membro: Membro) {
     return this.db.list(`${this.PATH}${key}/${this.MEMBRO_PATH}`).push(membro);
+  }
+
+  atualizarVotacao(key: string, membroKey: string, votacao: tipoTamanho) {
+    this.db
+      .object<number>(
+        `${this.PATH}${key}/${this.MEMBRO_PATH}${membroKey}/votacao`
+      )
+      .set(votacao);
   }
 }
