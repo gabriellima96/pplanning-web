@@ -1,0 +1,132 @@
+<nb-layout center>
+  <nb-layout-header><h1>P Planning</h1></nb-layout-header>
+
+  <nb-layout-column>
+    <div>
+      <nb-alert
+        status="info"
+        [nbSpinner]="rank.totalVotos !== rank.totalMembros"
+      >
+        Votos {{ rank.totalVotos }} / {{ rank.totalMembros }}
+      </nb-alert>
+    </div>
+    <div>
+      <nb-toggle
+        status="primary"
+        [(checked)]="resumo"
+        (click)="toggleResumo(resumo)"
+        >{{ resumo ? 'Completo' : 'Resumo' }}</nb-toggle
+      >
+    </div>
+    <nb-card accent="primary" status="primary">
+      <nb-card-header>Visualização do resultado</nb-card-header>
+      <nb-card-body>
+        <nb-card accent="success">
+          <nb-card-body>
+            <div class="cicle-tamanho">
+              <span>P</span>
+              <nb-badge
+                class="quantidade-tamanho"
+                [text]="rank.p.length"
+                status="success"
+                position="right"
+              ></nb-badge>
+            </div>
+
+            <nb-card
+              *ngIf="resumo"
+              class="card-users"
+              accent="success"
+              [size]="rank.p.length > 3 ? 'tiny' : ''"
+            >
+              <nb-list>
+                <nb-list-item *ngFor="let membro of rank.p">
+                  {{ membro.nome }}
+                </nb-list-item>
+              </nb-list>
+            </nb-card>
+          </nb-card-body>
+        </nb-card>
+
+        <nb-card accent="info">
+          <nb-card-body>
+            <div class="cicle-tamanho">
+              <span>M</span>
+              <nb-badge
+                class="quantidade-tamanho"
+                [text]="rank.m.length"
+                status="info"
+                position="right"
+              ></nb-badge>
+            </div>
+
+            <nb-card
+              *ngIf="resumo"
+              class="card-users"
+              accent="info"
+              [size]="rank.m.length > 3 ? 'tiny' : ''"
+            >
+              <nb-list>
+                <nb-list-item *ngFor="let membro of rank.m">
+                  {{ membro.nome }}
+                </nb-list-item>
+              </nb-list>
+            </nb-card>
+          </nb-card-body>
+        </nb-card>
+
+        <nb-card accent="danger">
+          <nb-card-body>
+            <div class="cicle-tamanho">
+              <span>G</span>
+              <nb-badge
+                class="quantidade-tamanho"
+                [text]="rank.g.length"
+                status="danger"
+                position="right"
+              ></nb-badge>
+            </div>
+
+            <nb-card
+              *ngIf="resumo"
+              class="card-users"
+              accent="danger"
+              [size]="rank.g.length > 3 ? 'tiny' : ''"
+            >
+              <nb-list>
+                <nb-list-item *ngFor="let membro of rank.g">
+                  {{ membro.nome }}
+                </nb-list-item>
+              </nb-list>
+            </nb-card>
+          </nb-card-body>
+        </nb-card>
+
+        <button
+          nbButton
+          fullWidth
+          status="primary"
+          size="giant"
+          class="pb-15"
+          (click)="onReiniciar()"
+        >
+          Reiniciar
+        </button>
+        <button
+          nbButton
+          fullWidth
+          status="info"
+          size="giant"
+          [cdkCopyToClipboard]="getUrl()"
+          (click)="mensagemCopiada()"
+        >
+          Compartilhar Grupo
+        </button>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+
+  <nb-layout-footer>
+    By&nbsp;<a href="https://gabriellima.site">Gabriel Lima</a>
+  </nb-layout-footer>
+</nb-layout>

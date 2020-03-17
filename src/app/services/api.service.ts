@@ -13,6 +13,10 @@ export interface Membro {
   votacao: tipoTamanho;
 }
 
+export interface MembroId extends Membro {
+  id: string;
+}
+
 export interface Projeto {
   criador: string;
   membros: Membro[];
@@ -43,6 +47,10 @@ export class ApiService {
     return this.db.object<Membro>(
       `${this.PATH}${key}/${this.MEMBRO_PATH}${membroKey}`
     );
+  }
+
+  buscarMembros(key: string) {
+    return this.db.list<MembroId>(`${this.PATH}${key}/${this.MEMBRO_PATH}`);
   }
 
   adicionarMembro(key: string, membro: Membro) {

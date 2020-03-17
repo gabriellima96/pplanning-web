@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, take } from 'rxjs/operators';
 
 import {
@@ -28,7 +28,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private api: ApiService,
     private route: ActivatedRoute,
-    private toastrService: NbToastrService
+    private toastrService: NbToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -70,7 +71,9 @@ export class HomeComponent implements OnInit {
           }
         );
       } else {
-        this.api.adicionarMembro(projeto.id, this.criarMembro());
+        const userId = this.api.adicionarMembro(projeto.id, this.criarMembro())
+          .key;
+        this.router.navigateByUrl(`voting/${projeto.id}/${userId}`);
       }
 
       this.toggleIsLoading();
@@ -79,8 +82,10 @@ export class HomeComponent implements OnInit {
 
   criarGrupo(): void {
     const projetoRef = this.api.criarProjeto(this.criarProjeto());
-    this.api.adicionarMembro(projetoRef.key, this.criarMembro());
+    const userId = this.api.adicionarMembro(projetoRef.key, this.criarMembro())
+      .key;
 
+    this.router.navigateByUrl(`dashboard/${projetoRef.key}/${userId}`);
     this.toggleIsLoading();
   }
 

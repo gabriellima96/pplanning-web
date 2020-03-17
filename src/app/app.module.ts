@@ -13,7 +13,10 @@ import {
   NbIconModule,
   NbSpinnerModule,
   NbToastrModule,
-  NbAlertModule
+  NbAlertModule,
+  NbBadgeModule,
+  NbListModule,
+  NbToggleModule
 } from '@nebular/theme';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -23,9 +26,16 @@ import { environment } from '../environments/environment';
 import { HomeComponent } from './pages/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { VotingPlanningComponent } from './pages/voting-planning/voting-planning.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, VotingPlanningComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    VotingPlanningComponent,
+    DashboardComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -45,7 +55,11 @@ import { VotingPlanningComponent } from './pages/voting-planning/voting-planning
       destroyByClick: true,
       preventDuplicates: true
     }),
-    NbAlertModule
+    NbAlertModule,
+    NbBadgeModule,
+    NbToggleModule,
+    NbListModule,
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

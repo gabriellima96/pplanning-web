@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
   ApiService,
-  Membro,
-  Projeto,
   ProjetoId,
   tipoTamanho
 } from 'src/app/services/api.service';
