@@ -77,7 +77,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getUrl() {
-    return `https://pplanning.gabriellima.site?grupoId=${this.grupoId}`;
+    return `https://pplaning.netlify.com/?grupoId=${this.grupoId}`;
   }
 
   mensagemCopiada() {
