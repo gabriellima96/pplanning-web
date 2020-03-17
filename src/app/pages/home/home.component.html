@@ -1,0 +1,52 @@
+<nb-layout center>
+  <nb-layout-header><h1>P Planning</h1></nb-layout-header>
+
+  <nb-layout-column>
+    <nb-card accent="primary" [nbSpinner]="isLoading">
+      <nb-card-header><h2>Acessar grupo</h2></nb-card-header>
+      <nb-card-body>
+        <form #f="ngForm" (ngSubmit)="onSubmit()">
+          <input
+            class="pb-15"
+            type="text"
+            nbInput
+            fullWidth
+            fieldSize="giant"
+            placeholder="Seu nome"
+            required
+            [(ngModel)]="nome"
+            name="nome"
+            minlength="2"
+          />
+          <input
+            class="pb-30"
+            type="text"
+            nbInput
+            fullWidth
+            fieldSize="giant"
+            placeholder="id do grupo"
+            required
+            [(ngModel)]="grupoId"
+            name="grupoId"
+            [disabled]="disabledGrupoId"
+            *ngIf="showGrupoId"
+          />
+          <button
+            nbButton
+            fullWidth
+            status="primary"
+            size="giant"
+            type="submit"
+            [disabled]="!f.valid || isLoading"
+          >
+            Entrar <nb-icon icon="log-in-outline"></nb-icon>
+          </button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+
+  <nb-layout-footer>
+    By&nbsp;<a href="gabriellima.site">Gabriel Lima</a>
+  </nb-layout-footer>
+</nb-layout>
